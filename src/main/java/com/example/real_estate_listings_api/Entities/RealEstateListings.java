@@ -104,7 +104,7 @@ public class RealEstateListings {
     @Override
     public String toString() {
         return "Listing{" + "id=" + this.id + ", coordinates=" + this.coordinates + ", city='"
-                + this.city + '\'' + ", state='" + this.state + '\'' + ", imgUrl="
-                + this.imgUrl + ", listingUrl=" + this.listingUrl + '}';
+                + this.city + '\'' + ", state='" + this.state + '\''
+                + ", imgUrl='" + this.imgUrl + '\'' + ", listingUrl='" + this.listingUrl+ '\'' + '}';
     }
 }
