@@ -1,16 +1,19 @@
-package com.example.real_estate_listings_api.Entities;
+package com.example.real_estate_listings_api;
+
+import jakarta.persistence.Embeddable;
 
 import java.util.Objects;
 
+@Embeddable
 public class Coordinates {
 
     private Double latitude;
     private Double longitude;
 
-    Coordinates() {
+    public Coordinates() {
     }
 
-    Coordinates(Double latitude, Double longitude) {
+    public Coordinates(Double latitude, Double longitude) {
         this.latitude = latitude;
         this.longitude = longitude;
     }

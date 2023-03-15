@@ -1,0 +1,7 @@
+For sending post requests in postman, use this format
+select post: http://localhost:8080/realestatelistings
+select body tab
+add Content-type: application/json
+add accept: application/json
+then go to body/raw and use below formatting for post requests
+{ "coordinates": {"latitude": , "longitude": }, "city": "", "state": "", "imgUrl": "", "listingUrl": ""}

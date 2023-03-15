@@ -1,26 +1,31 @@
 package com.example.real_estate_listings_api.Entities;
 
+import com.example.real_estate_listings_api.Coordinates;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.persistence.Lob;
 
 import java.net.URI;
 import java.util.Objects;
 
 //@Entity is a JPA annotation to make this object ready for storage in a JPA-based database
 @Entity
-public class RealEstateListings {
+public class RealEstateListing {
 
-    private @Id @GeneratedValue Long id;
+    private @Id
+    @GeneratedValue Long id;
     private Coordinates coordinates;
     private String city;
     private String state;
     private URI imgUrl;
+    @Lob
     private URI listingUrl;
 
-    RealEstateListings() {}
+    public RealEstateListing() {
+    }
 
-    RealEstateListings(Coordinates coordinates, String city, String state, URI imgUrl, URI listingUrl) {
+    public RealEstateListing(Coordinates coordinates, String city, String state, URI imgUrl, URI listingUrl) {
         this.coordinates = coordinates;
         this.city = city;
         this.state = state;
@@ -78,22 +83,22 @@ public class RealEstateListings {
 
     @Override
     public boolean equals(Object obj) {
-        if(this == obj) {
+        if (this == obj) {
             return true;
         }
 
-        if(!(obj instanceof RealEstateListings)) {
+        if (!(obj instanceof RealEstateListing)) {
             return false;
         }
 
-        RealEstateListings realEstateListings = (RealEstateListings) obj;
+        RealEstateListing realEstateListing = (RealEstateListing) obj;
 
-        return Objects.equals(this.id, realEstateListings.id)
-                && Objects.equals(this.coordinates, realEstateListings.coordinates)
-                && Objects.equals(this.city, realEstateListings.city)
-                && Objects.equals(this.state, realEstateListings.state)
-                && Objects.equals(this.imgUrl, realEstateListings.imgUrl)
-                && Objects.equals(this.listingUrl, realEstateListings.listingUrl);
+        return Objects.equals(this.id, realEstateListing.id)
+                && Objects.equals(this.coordinates, realEstateListing.coordinates)
+                && Objects.equals(this.city, realEstateListing.city)
+                && Objects.equals(this.state, realEstateListing.state)
+                && Objects.equals(this.imgUrl, realEstateListing.imgUrl)
+                && Objects.equals(this.listingUrl, realEstateListing.listingUrl);
     }
 
     @Override
@@ -105,6 +110,6 @@ public class RealEstateListings {
     public String toString() {
         return "Listing{" + "id=" + this.id + ", coordinates=" + this.coordinates + ", city='"
                 + this.city + '\'' + ", state='" + this.state + '\''
-                + ", imgUrl='" + this.imgUrl + '\'' + ", listingUrl='" + this.listingUrl+ '\'' + '}';
+                + ", imgUrl='" + this.imgUrl + '\'' + ", listingUrl='" + this.listingUrl + '\'' + '}';
     }
 }
