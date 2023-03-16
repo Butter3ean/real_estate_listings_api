@@ -1,4 +1,4 @@
-package com.example.real_estate_listings_api;
+package com.example.real_estate_listings_api.Embeddables;
 
 import jakarta.persistence.Embeddable;
 

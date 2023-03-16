@@ -4,5 +4,7 @@ select body tab
 add Content-type: application/json
 add accept: application/json
 then go to body/raw and use below formatting for post requests
-'{ "coordinates": {"latitude": , "longitude": }, "city": "", "state": "", "imgUrl": "", "listingUrl": ""}'
+'{"coordinates": {"latitude": , "longitude": }, "address": {"streetAddress": "", "city": "", "state": "", "zipCode":""} ,"imgUrl": "", "listingUrl": ""}'
 32.03997850567866, -81.0966345449318
+
+'{"mlsNum": INSERTNUM,"coordinates": {"latitude": INSERTDBL,"longitude": INSERTDBL}, "address": {"streetAddress": "INSERTSTR", "city": "INSERTSTR", "state": "INSERTSTR", "zipCode": "INSERTSTR"}, "price": INSERTNUM, "imgUrl": "INSERTURL", "listingUrl": "INSERTURL"}'

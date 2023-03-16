@@ -1,6 +1,7 @@
 package com.example.real_estate_listings_api.Entities;
 
-import com.example.real_estate_listings_api.Coordinates;
+import com.example.real_estate_listings_api.Embeddables.Address;
+import com.example.real_estate_listings_api.Embeddables.Coordinates;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
@@ -13,40 +14,32 @@ import java.util.Objects;
 @Entity
 public class RealEstateListing {
 
-    private @Id
-    @GeneratedValue Long id;
+    private @Id @GeneratedValue Long id;
+    private Integer mlsNum;
     private Coordinates coordinates;
-    private String city;
-    private String state;
+    private Address address;
+    private Integer price;
     private URI imgUrl;
     @Lob
     private URI listingUrl;
 
-    public RealEstateListing() {
-    }
+    public RealEstateListing() {}
 
-    public RealEstateListing(Coordinates coordinates, String city, String state, URI imgUrl, URI listingUrl) {
+    public RealEstateListing(Integer mlsNum, Coordinates coordinates, Address address, Integer price, URI imgUrl, URI listingUrl) {
+        this.mlsNum = mlsNum;
         this.coordinates = coordinates;
-        this.city = city;
-        this.state = state;
+        this.address = address;
+        this.price = price;
         this.imgUrl = imgUrl;
         this.listingUrl = listingUrl;
     }
 
-    public Long getId() {
-        return this.id;
+    public Integer getMlsNum() {
+        return this.mlsNum;
     }
 
     public Coordinates getCoordinates() {
         return this.coordinates;
-    }
-
-    public String getCity() {
-        return this.city;
-    }
-
-    public String getState() {
-        return this.state;
     }
 
     public URI getImgUrl() {
@@ -57,20 +50,12 @@ public class RealEstateListing {
         return this.listingUrl;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setMlsNum(Integer mlsNum) {
+        this.mlsNum = mlsNum;
     }
 
     public void setCoordinates(Coordinates coordinates) {
         this.coordinates = coordinates;
-    }
-
-    public void setCity(String city) {
-        this.city = city;
-    }
-
-    public void setState(String state) {
-        this.state = state;
     }
 
     public void setImgUrl(URI imgUrl) {
@@ -79,6 +64,30 @@ public class RealEstateListing {
 
     public void setListingUrl(URI listingUrl) {
         this.listingUrl = listingUrl;
+    }
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
+    }
+
+    public Integer getPrice() {
+        return price;
+    }
+
+    public void setPrice(Integer price) {
+        this.price = price;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     @Override
@@ -94,22 +103,23 @@ public class RealEstateListing {
         RealEstateListing realEstateListing = (RealEstateListing) obj;
 
         return Objects.equals(this.id, realEstateListing.id)
+                && Objects.equals(this.mlsNum, realEstateListing.mlsNum)
                 && Objects.equals(this.coordinates, realEstateListing.coordinates)
-                && Objects.equals(this.city, realEstateListing.city)
-                && Objects.equals(this.state, realEstateListing.state)
+                && Objects.equals(this.address, realEstateListing.address)
+                && Objects.equals(this.price, realEstateListing.price)
                 && Objects.equals(this.imgUrl, realEstateListing.imgUrl)
                 && Objects.equals(this.listingUrl, realEstateListing.listingUrl);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(this.id, this.coordinates, this.city, this.state, this.imgUrl, this.listingUrl);
+        return Objects.hash(this.id, this.mlsNum, this.coordinates, this.address, this.price, this.imgUrl, this.listingUrl);
     }
 
     @Override
     public String toString() {
-        return "Listing{" + "id=" + this.id + ", coordinates=" + this.coordinates + ", city='"
-                + this.city + '\'' + ", state='" + this.state + '\''
-                + ", imgUrl='" + this.imgUrl + '\'' + ", listingUrl='" + this.listingUrl + '\'' + '}';
+        return "Listing{"+ "id=" + this.id + ", mlsNum=" + this.mlsNum + ", coordinates=" + this.coordinates +
+                ", address=" + this.address + ", price=" + this.price + ", imgUrl='" + this.imgUrl + '\'' +
+                ", listingUrl='" + this.listingUrl + '\'' + '}';
     }
 }
