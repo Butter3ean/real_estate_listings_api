@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+import static org.springframework.web.bind.annotation.RequestMethod.GET;
+
 @RestController
 public class RealEstateListingsController {
 
@@ -25,6 +27,18 @@ public class RealEstateListingsController {
     RealEstateListing getSingleListing(@PathVariable Long id) {
         return repository.findById(id)
                 .orElseThrow(() -> new ListingNotFoundException(id));
+    }
+
+    @RequestMapping(value = "realEsateListings", params = "mlsNum", method = GET)
+    @ResponseBody
+    RealEstateListing getListingByMlsNum(@RequestParam Integer mlsNum) {
+        return repository.findByMlsNum(mlsNum);
+    }
+
+    @RequestMapping(value = "realEstateListings", params = "city", method = GET)
+    @ResponseBody
+    List<RealEstateListing> getListingByCity(@RequestParam String city) {
+        return repository.findByAddress_City(city);
     }
 
     @PostMapping("/realestatelistings")
