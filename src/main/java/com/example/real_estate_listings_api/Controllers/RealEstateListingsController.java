@@ -32,10 +32,10 @@ public class RealEstateListingsController {
     @GetMapping(params = {"mlsNum"})
     Optional<RealEstateListing> getListingByMls(Integer mlsNum) {
         Optional<RealEstateListing> listing = repository.findByMlsNum(mlsNum);
-        if(listing.isEmpty()) {
-            throw new ListingNotFoundException(mlsNum.longValue());
+        if (listing.isPresent()) {
+            return repository.findByMlsNum(mlsNum);
         }
-        return repository.findByMlsNum(mlsNum);
+        throw new ListingNotFoundException(mlsNum.longValue());
     }
 
     //returns all listings with that zipcode
