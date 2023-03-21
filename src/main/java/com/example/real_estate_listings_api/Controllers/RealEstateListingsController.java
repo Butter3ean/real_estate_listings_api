@@ -3,7 +3,6 @@ package com.example.real_estate_listings_api.Controllers;
 import com.example.real_estate_listings_api.Entities.RealEstateListing;
 import com.example.real_estate_listings_api.Exceptions.ListingNotFoundException;
 import com.example.real_estate_listings_api.Repositories.RealEstateListingRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -13,8 +12,11 @@ import java.util.Optional;
 @RequestMapping("/realestatelistings")
 public class RealEstateListingsController {
 
-    @Autowired
-    private RealEstateListingRepository repository;
+    private final RealEstateListingRepository repository;
+
+    public RealEstateListingsController(RealEstateListingRepository repository) {
+        this.repository = repository;
+    }
 
     //Returns all listings
     @GetMapping()
